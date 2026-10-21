@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Good Vibez Ice-Cream & Delights · Siusega, Apia</title>
+<meta name="description" content="Ice cream, shakes, churros, mini pancakes, brownies and hot snacks in Siusega, Apia. Family friendly with an enclosed playground. Call 77 87721.">
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#fff7fb;--ink:#12335f;--muted:#4f6a8f;--card:#ffffff;--line:#f3d3e4;
+ --pink:#ff4fa3;--sky:#27b4ea;--butter:#ffd84a;--navy:#0f3b6b;--choc:#4a2a1e;
+ --head:'Bagel Fat One','Arial Rounded MT Bold','Trebuchet MS',sans-serif;
+ --body:'Nunito','Segoe UI',Arial,sans-serif;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1b33;--ink:#fff3fa;--muted:#b7c6e0;--card:#15284a;--line:#2b4270}}
+:root[data-theme="dark"]{--bg:#0d1b33;--ink:#fff3fa;--muted:#b7c6e0;--card:#15284a;--line:#2b4270}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 17px/1.55 var(--body);overflow-x:hidden}
+a{color:inherit}h1,h2,h3{font-family:var(--head);font-weight:400;margin:0;line-height:1.05}
+:focus-visible{outline:3px solid var(--butter);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:999px;font:900 16px var(--body);text-decoration:none;border:0;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px) scale(1.03)}
+.btn.pink{background:var(--pink);color:#fff;box-shadow:0 8px 24px -6px var(--pink)}
+.btn.sky{background:#fff;color:var(--navy);box-shadow:0 8px 24px -8px #0006}
+header{position:sticky;top:0;z-index:30;background:var(--navy);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font:400 24px var(--head)}
+.brand img{width:40px;height:40px;border-radius:50%}
+header nav{display:flex;gap:20px;align-items:center}
+header nav a{color:#cfe3ff;text-decoration:none;font-weight:800;font-size:15px}
+@media(max-width:760px){header nav a.l{display:none}}
+/* hero */
+.hero{position:relative;background:linear-gradient(115deg,var(--pink) 0 50%,var(--sky) 50% 100%);color:#fff;overflow:hidden;padding:48px 0 64px}
+.hero::after{content:"";position:absolute;inset:auto -10% -60px -10%;height:120px;background:var(--bg);border-radius:50% 50% 0 0/100% 100% 0 0}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(34px,5.6vw,60px);text-shadow:0 4px 0 rgba(15,59,107,.35)}
+.hero p{font-size:19px;margin:16px 0 22px;max-width:30em;font-weight:700}
+.status{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--navy);font-weight:900;border-radius:99px;padding:7px 16px;font-size:14px;margin-bottom:16px}
+.status i{width:10px;height:10px;border-radius:50%;background:#aab;display:inline-block}
+.status.open i{background:#1fbf6a;box-shadow:0 0 0 4px #1fbf6a44}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips span{background:rgba(255,255,255,.22);border:1.5px solid rgba(255,255,255,.6);border-radius:99px;padding:5px 14px;font-weight:800;font-size:14px}
+/* 3D ring */
+.stage{perspective:1000px;height:340px;display:flex;align-items:center;justify-content:center;--w:170px;--r:222px}
+@media(max-width:520px){.stage{height:290px;--w:130px;--r:170px}}
+.ring{position:relative;width:var(--w);height:calc(var(--w)*1.4);transform-style:preserve-3d;animation:spin 32s linear infinite}
+.stage:hover .ring{animation-play-state:paused}
+.face{position:absolute;inset:0;transform:rotateY(calc(var(--i)*45deg)) translateZ(var(--r));backface-visibility:hidden}
+.face img{width:100%;height:100%;object-fit:cover;border-radius:14px;border:4px solid #fff;filter:drop-shadow(0 0 14px #fff8) drop-shadow(0 0 30px var(--butter))}
+@keyframes spin{to{transform:rotateY(-360deg)}}
+/* bloom */
+.bloom{opacity:0;filter:blur(14px) brightness(1.7) saturate(1.4);transform:scale(.88);transition:all 1s cubic-bezier(.2,.8,.2,1)}
+.bloom.in{opacity:1;filter:none;transform:none}
+.tilt{transform-style:preserve-3d;transition:transform .2s;will-change:transform}
+.glow{position:relative}
+.glow::before{content:"";position:absolute;inset:8%;background:var(--g,var(--pink));filter:blur(36px);opacity:.55;z-index:0;border-radius:30px;transition:opacity .3s}
+.glow:hover::before{opacity:.95}
+.glow img{position:relative;z-index:1;width:100%;display:block;border-radius:18px;border:4px solid #fff;box-shadow:0 12px 30px -10px #0005}
+/* sections */
+section{padding:68px 0}
+h2{font-size:clamp(34px,6vw,54px);color:var(--pink)}
+.sub{color:var(--muted);max-width:34em;margin:10px 0 0}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 24px}
+.tab{border:2px solid var(--pink);background:transparent;color:var(--pink);border-radius:99px;padding:10px 20px;font:900 15px var(--body);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--pink);color:#fff;box-shadow:0 8px 20px -6px var(--pink)}
+.panel{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:30px;align-items:start;perspective:1000px}
+@media(max-width:780px){.panel{grid-template-columns:1fr}}
+.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px}
+.items{list-style:none;margin:0;padding:0}
+.items li{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:14px 18px;margin-bottom:12px;display:grid;grid-template-columns:1fr auto;gap:2px 12px}
+.items b{font-size:18px}.items span{color:var(--muted);font-size:14px;grid-column:1}
+.items em{font-style:normal;font-weight:900;color:var(--sky);grid-row:1;grid-column:2;white-space:nowrap}
+.items .new{background:var(--butter);color:var(--navy);font-size:11px;font-weight:900;padding:2px 8px;border-radius:99px;margin-left:8px;vertical-align:middle}
+.specials{background:var(--navy);color:#fff}
+.specials h2{color:var(--butter)}
+.spgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;margin-top:30px;perspective:1000px}
+.sp{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.25);border-radius:22px;padding:22px}
+.sp h3{font-size:26px;color:var(--butter);margin-bottom:8px}.sp p{margin:0;color:#d5e5ff;font-size:15px}
+.rv{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:28px}
+.rv blockquote{margin:0;background:var(--card);border:2px solid var(--line);border-radius:22px;padding:22px;font-weight:700}
+.rv cite{display:block;margin-top:10px;font:800 14px var(--body);color:var(--muted)}
+.score{display:flex;align-items:center;gap:14px;margin-top:16px;font-weight:900}
+.score b{font:400 64px/1 var(--head);color:var(--sky)}.stars{color:#f7a600;letter-spacing:3px;font-size:22px}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+@media(max-width:760px){.visit{grid-template-columns:1fr}}
+.hours{width:100%;border-collapse:collapse;margin-top:16px}
+.hours td{padding:11px 0;border-bottom:2px dashed var(--line)}.hours td:last-child{text-align:right;font-weight:900}
+.hours tr.today td{color:var(--pink)}
+.info{list-style:none;padding:0;margin:18px 0 0}.info li{padding:9px 0}.info small{display:block;color:var(--muted);font-weight:700}
+.social{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.social a{border:2px solid var(--pink);color:var(--pink);border-radius:99px;padding:10px 20px;font-weight:900;text-decoration:none}
+.social a:hover{background:var(--pink);color:#fff}
+.mapcard{background:linear-gradient(135deg,var(--pink),var(--sky));color:#fff;border-radius:28px;padding:32px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.mapcard h3{font-size:38px}.mapcard p{margin:0;font-weight:700}
+footer{background:var(--navy);color:#b9d0f5;padding:26px 0 96px;font-size:14px;text-align:center}
+.bar{display:none}
+@media(max-width:760px){.bar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;inset:auto 0 0 0;z-index:40;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:var(--navy)}}
+@media(prefers-reduced-motion:reduce){.ring{animation:none}.bloom{transition:none}html{scroll-behavior:auto}}
+</style>
+<meta name="theme-color" content="#0f3b6b">
+<link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+<link rel="apple-touch-icon" href="assets/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Good Vibez Ice-Cream &amp; Delights · Siusega, Apia">
+<meta property="og:description" content="Ice cream, shakes, churros, mini pancakes, brownies and hot snacks. Family friendly with an enclosed playground. Call 77 87721.">
+<meta property="og:image" content="assets/shakes.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"IceCreamShop","name":"Good Vibez Ice-Cream & Delights","telephone":"+685 77 87721","image":"assets/logo.jpg","address":{"@type":"PostalAddress","addressLocality":"Siusega, Apia","addressCountry":"WS"},"servesCuisine":"Ice cream, shakes, snacks","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday"],"opens":"12:00","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Wednesday","Thursday","Friday","Saturday"],"opens":"12:00","closes":"20:00"}],"sameAs":["https://www.facebook.com/goodvibez.samoa","https://www.instagram.com/goodvibez.samoa"]}</script>
+</head>
+<body>
+<header><div class="wrap">
+ <a class="brand" href="#top"><img data-i="logo" width="40" height="40" alt="Good Vibez logo">Good Vibez</a>
+ <nav><a class="l" href="#menu">Menu</a><a class="l" href="#specials">Specials</a><a class="l" href="#visit">Visit</a><a class="btn pink" style="padding:9px 18px" href="tel:+6857787721">Call 77 87721</a></nav>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+ <div>
+  <div class="status" id="status"><i></i><span>Checking hours…</span></div>
+  <h1>A family-owned ice-cream shop spreading happiness, one cone at a time!</h1>
+  <p>Stop by for ice-cream, sundaes, shakes, and good vibez only ✨</p>
+  <div class="cta"><a class="btn sky" href="tel:+6857787721">Call to order</a><a class="btn pink" href="https://www.google.com/maps/search/?api=1&query=553J%2BGF%20Apia" target="_blank" rel="noopener">Get directions</a></div>
+  <div class="chips"><span>5.0 on Google</span><span>Proudly serving Tip Top</span><span>Kids' playground</span></div>
+ </div>
+ <div class="stage" aria-hidden="true"><div class="ring" id="ring"></div></div>
+</div></div>
+
+<section id="menu" style="padding-top:20px"><div class="wrap">
+ <h2>What's on the menu</h2>
+ <p class="sub">Tap a category. Prices shown are from our latest posts; ask in store for the rest.</p>
+ <div class="tabs" role="tablist" id="tabs"></div>
+ <div class="panel" id="panel"></div>
+</div></section>
+
+<section class="specials" id="specials"><div class="wrap">
+ <h2>Specials and perks</h2>
+ <div class="spgrid">
+  <div class="sp tilt"><h3>Nuggets and fries, $15</h3><p>Six crispy nuggets with fries. New, and a hit with little (and big) appetites.</p></div>
+  <div class="sp tilt"><h3>Brownie treats</h3><p>The Brownie Vibez Cup and the Brownie Fudge Bowl, warm and fudgy with ice cream and toppings.</p></div>
+  <div class="sp tilt"><h3>Free mini cooler bag</h3><p>Spend $50 and the first 20 customers get a Tip Top mini cooler bag. Ask in store if any are left.</p></div>
+  <div class="sp tilt"><h3>Insider combo</h3><p>A customer favourite: a cup of cookies and cream topped with a scoop of Koko Samoa ice cream.</p></div>
+ </div>
+</div></section>
+
+<section><div class="wrap">
+ <h2>Loved in Apia</h2>
+ <div class="score"><b>5.0</b><div><div class="stars" aria-hidden="true">★★★★★</div>Google reviews</div></div>
+ <div class="rv">
+  <blockquote>“Best ice cream in Samoa, hands down.”<cite>Dominic Levae</cite></blockquote>
+  <blockquote>“VERY TOURIST FRIENDLY! Great vibes and great ice cream.”<cite>Keith Toailoa, Local Guide</cite></blockquote>
+  <blockquote>Our preschooler played for over an hour in the enclosed playground while we enjoyed nachos and ice cream.<cite>Douglas Sekone-Fraser, Local Guide</cite></blockquote>
+ </div>
+</div></section>
+
+<section id="visit" style="padding-top:0"><div class="wrap visit">
+ <div>
+  <h2>Come say hi</h2>
+  <table class="hours" id="hours"><tbody>
+   <tr data-d="1,2"><td>Monday and Tuesday</td><td>12 pm – 7 pm</td></tr>
+   <tr data-d="3,4,5,6"><td>Wednesday to Saturday</td><td>12 pm – 8 pm</td></tr>
+   <tr data-d="0"><td>Sunday</td><td>See Facebook</td></tr>
+  </tbody></table>
+  <ul class="info"><li><small>Phone</small><a href="tel:+6857787721"><b>77 87721</b></a></li><li><small>Find us</small>Siusega, Apia · Plus code 553J+GF</li><li><small>Service</small>Takeaway and outdoor play area</li></ul>
+  <div class="social" id="social"></div>
+ </div>
+ <div class="mapcard tilt"><h3>Near you in Siusega</h3><p>Swing by for a scoop, or call ahead and we'll have it ready.</p>
+  <a class="btn sky" href="https://www.google.com/maps/search/?api=1&query=553J%2BGF%20Apia" target="_blank" rel="noopener">Get directions</a>
+  <a class="btn pink" style="box-shadow:none;background:var(--navy)" href="tel:+6857787721">Call 77 87721</a></div>
+</div></section>
+</main>
+<footer>© Good Vibez Ice-Cream & Delights, Siusega, Apia. Proudly serving Tip Top ice creams.</footer>
+<div class="bar"><a class="btn pink" href="tel:+6857787721">Call to order</a><a class="btn sky" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=553J%2BGF%20Apia">Directions</a></div>
+
+<script>
+var IMG={"logo": "assets/logo.jpg", "hot": "assets/hot.jpg", "pancakes": "assets/pancakes.jpg", "churros": "assets/churros.jpg", "nuggets": "assets/nuggets.jpg", "shakes": "assets/shakes.jpg", "something": "assets/something.jpg", "brownie": "assets/brownie.jpg", "morning": "assets/morning.jpg"};
+var FB_URL="https://www.facebook.com/goodvibez.samoa",IG_URL="https://www.instagram.com/goodvibez.samoa";
+document.getElementById('social').innerHTML='<a href="'+FB_URL+'" target="_blank" rel="noopener">Facebook</a><a href="'+IG_URL+'" target="_blank" rel="noopener">Instagram</a>';
+document.querySelectorAll('[data-i]').forEach(function(e){e.src=IMG[e.dataset.i]});
+/* ring */
+var rp=["shakes","hot","pancakes","something","churros","brownie","nuggets","morning"],ring=document.getElementById('ring');
+rp.forEach(function(k,i){var d=document.createElement('div');d.className='face';d.style.setProperty('--i',i);d.innerHTML='<img alt="" decoding="async" src="'+IMG[k]+'">';ring.appendChild(d)});
+/* menu */
+var M={
+"Shakes and scoops":{pics:["shakes","something"],items:[["Matcha, Oreo and Biscoff milkshakes","Thick, creamy, topped and swirled","Ask"],["Signature shakes","Creamy, dreamy, totally vibez","Ask"],["Ice cream scoops and sundaes","Tip Top ice creams, plus shakes and ice-cream sodas","Ask"],["Smoothies","Fresh and fruity","Ask"],["Koko Samoa scoop","A local favourite, try it on top of cookies and cream","Ask"]]},
+"Hot snacks":{pics:["hot","nuggets"],items:[["Plain hot dog","American Hoffy sausage","$6"],["Deluxe hot dog","American Hoffy sausage, fully loaded","$12"],["Beef nachos","Loaded, cheesy and absolutely delicious","$20"],["Large curly fries","Share them (or don't)","$15"],["6 nuggets and fries","Comes with a dip. Family friendly","$15"]]},
+"Sweet bites":{pics:["pancakes","churros","brownie"],items:[["Mini pancakes","Biscoff Crunch or Oreo Crunch. Boxes of 12, 18, 24 or 40","Ask"],["Churros, 6 pc or 12 pc","Cinnamon-dusted, with whipped cream","Ask"],["Churro bites and ice cream","Warm bites with a scoop on top","Ask"],["Brownie Vibez Cup","Rich, fudgy brownie, ice cream and toppings","Ask"],["Brownie Fudge Bowl","Warm brownies, ice cream, fudge and toppings","Ask"]]}
+};
+var tabs=document.getElementById('tabs'),panel=document.getElementById('panel');
+function show(n){
+ tabs.querySelectorAll('.tab').forEach(function(t){t.setAttribute('aria-selected',t.textContent===n)});
+ var m=M[n],g=["--pink","--sky","--butter"];
+ panel.innerHTML='<div class="pics">'+m.pics.map(function(k,i){return '<div class="glow tilt" style="--g:var('+g[i%3]+')"><img class="bloom" loading="lazy" decoding="async" alt="'+n+'" src="'+IMG[k]+'"></div>'}).join('')+'</div><ul class="items">'+m.items.map(function(r){return '<li><b>'+r[0]+'</b><em>'+(r[2]=="Ask"?"Ask in store":r[2])+'</em><span>'+r[1]+'</span></li>'}).join('')+'</ul>';
+ bloomAll();tiltAll();
+}
+Object.keys(M).forEach(function(n){var b=document.createElement('button');b.className='tab';b.type='button';b.setAttribute('role','tab');b.textContent=n;b.onclick=function(){show(n)};tabs.appendChild(b)});
+/* bloom on scroll */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.2});
+function bloomAll(){document.querySelectorAll('.bloom:not(.in)').forEach(function(e){io.observe(e)})}
+/* 3D tilt */
+function tiltAll(){document.querySelectorAll('.tilt').forEach(function(el){
+ if(el._t)return;el._t=1;
+ el.addEventListener('pointermove',function(ev){var r=el.getBoundingClientRect(),x=(ev.clientX-r.left)/r.width-.5,y=(ev.clientY-r.top)/r.height-.5;el.style.transform='rotateY('+(x*16)+'deg) rotateX('+(-y*16)+'deg) translateZ(10px)'});
+ el.addEventListener('pointerleave',function(){el.style.transform=''});
+})}
+/* open status, Samoa time */
+(function(){
+ var p={};new Intl.DateTimeFormat('en-US',{timeZone:'Pacific/Apia',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});
+ var d=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(p.weekday),h=(+p.hour%24)+(+p.minute)/60,el=document.getElementById('status'),t=el.querySelector('span');
+ document.querySelectorAll('#hours tr').forEach(function(r){if(r.dataset.d.split(',').indexOf(String(d))>-1)r.className='today'});
+ if(d===0){t.textContent="Sunday hours: check our Facebook";return}
+ var close=(d<=2)?19:20;
+ if(h>=12&&h<close){el.className='status open';t.textContent="Open now · until "+(close-12)+" pm"}
+ else if(h<12){t.textContent="Opens today at 12 pm"}else{t.textContent="Closed now · opens 12 pm"}
+})();
+show("Shakes and scoops");tiltAll();
+</script>
+</body>
+</html>
